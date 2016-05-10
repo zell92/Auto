@@ -51,11 +51,13 @@
 					<td><label>Casa Automobilistica</label></td>
 					<td><h:selectOneMenu value="#{carController.carmakerId}">
 							<f:selectItem itemValue="#{null}" itemLabel="Non specificato" />
-							<c:forEach var="carmaker" items="#{carmakerController.carmakers}">
+							<c:forEach var="carmaker" items="#{creatorController.carmakers}">
 								<f:selectItem itemValue="#{carmaker.id}"
 									itemLabel="#{carmaker.name}" />
+
 							</c:forEach>
-						</h:selectOneMenu></td>
+						</h:selectOneMenu>
+						</td>
 				<tr>
 					<td colspan="2"><h:commandButton value="Conferma"
 							action="#{carController.createCar}">

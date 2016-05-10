@@ -19,7 +19,7 @@ div{margin-left: 8px
 <body>
 	<f:view>
 	<div class="jumbotron">
-		<h1>Casa automobilistica ${carmakerController.carmaker} </h1>
+		<h1>Casa automobilistica ${carmakerController.carmaker.name} </h1>
 		<h2>Lista Automobili:</h2>
 	</div>
 		<h:form>

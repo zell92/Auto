@@ -8,7 +8,7 @@
 <f:view>
 <h1></h1>
 <h2>Details</h2>
-<div>Code: ${carController.model}</div>
+<div>Code: ${carmakerController.Id}</div>
 
 </f:view>
 </body>

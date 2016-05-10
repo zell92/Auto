@@ -43,10 +43,10 @@ div{margin-left: 8px
 							</h:commandLink></td>
 						<td>${car.carmaker.name}</td>
 						<td>${car.code}</td>
-						<!-- <td><h:commandLink action="#{carController.deleteCar}"
+						<td><h:commandLink action="#{carController.deleteCar}"
 								value="Elimina">
 								<f:param name="id" value="#{car.id}" />
-							</h:commandLink></td>-->
+							</h:commandLink></td>
 					</tr>
 				</c:forEach>
 			</table>

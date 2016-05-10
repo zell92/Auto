@@ -4,7 +4,7 @@ import it.uniroma3.model.Car;
 import it.uniroma3.model.Carmaker;
 import it.uniroma3.model.CarmakerFacade;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -13,16 +13,15 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean
-@SessionScoped
 public class CarmakerController {
-	
-	@ManagedProperty(value="")
+	@ManagedProperty(value="#{param.carmakerId}")
 	private Long id;
 	private String name;
 	private List<Car> cars;
 	private List<Carmaker> carmakers;
 	private Carmaker carmaker;
-	private Long carmakerId;
+
+
 	
 	@EJB
 	private CarmakerFacade carmakerFacade;
@@ -33,23 +32,20 @@ public class CarmakerController {
 	}
 	
 
-	
-	public String showCars(){
-		Carmaker cm = this.carmakerFacade.getCarmaker(carmakerId);
-		this.cars=this.carmakerFacade.getCars(cm);	
 
+	public String showCars(){
+		this.carmaker = this.carmakerFacade.getCarmaker(id);
+		
+		this.cars=this.carmakerFacade.getCars(this.carmaker);	
+		if(this.cars==null)
+			this.cars= new ArrayList<Car>();
 
 			return "listaMacchine";
 	}
 	
-	public String newCar(){
-		this.carmakers=this.carmakerFacade.getAllCarmakers();	
-		return "newCar";
-	}
+	
 	public String listCarmakers(){
 		this.carmakers=this.carmakerFacade.getAllCarmakers();	
-
-
 			return "listaCaseAutomobilistiche";
 	}
 	
@@ -116,16 +112,6 @@ public class CarmakerController {
 	}
 
 
-
-	public Long getCarmakerId() {
-		return carmakerId;
-	}
-
-
-
-	public void setCarmakerId(Long carmakerId) {
-		this.carmakerId = carmakerId;
-	}
 
 
 

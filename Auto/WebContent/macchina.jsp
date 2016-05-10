@@ -1,4 +1,5 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <!DOCTYPE html>
 <html>
@@ -9,19 +10,36 @@
 <link href="css/jumbosmaller.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<f:view>
+	
 		<div class="jumbotron">
-			<h1>Automobile<br><small>  dettagli:</small>
+			<h1>
+				Automobile<br>
+				
 			</h1>
 		</div>
-		<ul class="list-group">
-			<li class="list-group-item">Modello: ${carController.car.id}</li>
-			<!-- <li class="list-group-item">Codice: ${carController.car.code}</li>
-			<li class="list-group-item">Prezzo: ${carController.car.price}</li>
-			<li class="list-group-item">Casa automobilistica: ${carController.car.quantity}</li>
-			<li class="list-group-item">Descrizione: ${carController.car.description}</li>-->
-		</ul>
+	<f:view>
+	
+	<div class="container">
+	<div class="starter-template">
+	
+		<h2>${carController.car.model}</h2>
+		<h3><small>Dettagli:</small></h3>
+			<div>Prezzo: ${carController.car.price} Euro</div>
+			<div>Descrizione: ${carController.car.description}</div>
+			<div>Codice: ${carController.car.code}</div>
+		<div>
+			<c:if test="${carController.car.carmaker != null}">
+				Casa automobilistica: ${carController.car.carmaker.name} 
+			</c:if>
+		</div>
+		<c:if test="${carController.car.carmaker == null}">
+				Casa automobilistica: Non specificata 
+			</c:if>
+
+	</div>
+	</div>
 		
+
 	</f:view>
 	<script src="//code.jquery.com/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>

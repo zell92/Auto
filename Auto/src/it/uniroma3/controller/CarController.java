@@ -14,27 +14,26 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean
-@SessionScoped
 public class CarController {
-	
-	//@ManagedProperty(value="")
+	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	private String model;
 	private Float price;
 	private String description;
 	private String code;
 	private Long carmakerId;
-	private Carmaker carmaker;
 	private List<Car> cars;
+	private Carmaker carmaker;
 	private Car car;
+	private List<Carmaker> carmakers; 
 	
 
 	
 	@EJB
 	private CarFacade carFacade;
-@EJB
-private CarmakerFacade carmakerFacade;
-	
+	@EJB
+	private CarmakerFacade carmakerFacade;
+
 	
 	public String createCar() {
 		this.carmaker = this.carmakerFacade.getCarmaker(carmakerId);
@@ -48,12 +47,10 @@ private CarmakerFacade carmakerFacade;
 		return "macchina";
 	}
 	
-
+	
 	
 	public String listCars() {
 		this.cars=this.carFacade.getAllCars();
-		if(cars==null)
-			return "errore";
 		return "listaTutteMacchine";
 	}
 	
@@ -129,16 +126,6 @@ private CarmakerFacade carmakerFacade;
 	}
 
 
-	public Carmaker getCarmaker() {
-		return carmaker;
-	}
-
-
-	public void setCarmaker(Carmaker carmaker) {
-		this.carmaker = carmaker;
-	}
-
-
 	public List<Car> getCars() {
 		return cars;
 	}
@@ -156,6 +143,26 @@ private CarmakerFacade carmakerFacade;
 
 	public void setCar(Car car) {
 		this.car = car;
+	}
+
+
+	public List<Carmaker> getCarmakers() {
+		return carmakers;
+	}
+
+
+	public void setCarmakers(List<Carmaker> carmakers) {
+		this.carmakers = carmakers;
+	}
+
+
+	public Carmaker getCarmaker() {
+		return carmaker;
+	}
+
+
+	public void setCarmaker(Carmaker carmaker) {
+		this.carmaker = carmaker;
 	}
 
 

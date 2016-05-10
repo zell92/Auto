@@ -31,7 +31,7 @@
 				href='<c:url value="/faces/newCarmaker.jsp" />'>Inserisci una
 					casa automobilistica</a></li>
 			<li class="list-group-item"><h:form>
-					<h:commandLink action="#{carmakerController.newCar}"
+					<h:commandLink action="#{creatorController.newCar}"
 						value="Aggiungi una nuova macchina" />
 				</h:form></li>
 		</ul>
