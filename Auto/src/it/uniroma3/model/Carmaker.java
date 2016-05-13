@@ -16,7 +16,7 @@ public class Carmaker {
 	private String name;
 	
 	
-	@OneToMany(mappedBy = "carmaker")
+	@OneToMany(mappedBy = "carmaker", cascade = {CascadeType.REMOVE})
 	private List<Car> cars;
 
 	public Carmaker() {}
