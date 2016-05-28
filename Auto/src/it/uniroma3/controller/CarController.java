@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.EJBTransactionRolledbackException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -26,34 +27,37 @@ public class CarController {
 	private Carmaker carmaker;
 	private Car car;
 	private List<Carmaker> carmakers; 
-	
 
-	
+
+
 	@EJB
 	private CarFacade carFacade;
 	@EJB
 	private CarmakerFacade carmakerFacade;
 
-	
+
 	public String createCar() {
-		this.carmaker = this.carmakerFacade.getCarmaker(carmakerId);
+		try{this.carmaker = this.carmakerFacade.getCarmaker(carmakerId);
 		this.car = this.carFacade.createCar(this.model, this.price, this.description, this.code, this.carmaker);
 		return listCars();
+		}catch(EJBTransactionRolledbackException e){
+			return "errore";
+		}
 	}
-	
-	
+
+
 	public String findCar() {
 		this.car=this.carFacade.getCar(this.id);
 		return "macchina";
 	}
-	
-	
-	
+
+
+
 	public String listCars() {
 		this.cars=this.carFacade.getAllCars();
 		return "listaTutteMacchine";
 	}
-	
+
 	public String deleteCar(){
 		this.carFacade.deleteCar(this.id);
 		return listCars();
@@ -63,7 +67,7 @@ public class CarController {
 		return listCars();
 	}
 
-	
+
 	public Long getId() {
 		return id;
 	}

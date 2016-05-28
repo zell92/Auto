@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h1>Errore nell'inserimento dei dati</h1>
-	<a href='<c:url value="/faces/index.jsp" />'>Torna all'Indice</a>
+	<a href='<c:url value="/faces/index.jsp" />'>Torna alla home</a>
 	<script src="//code.jquery.com/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 </body>
